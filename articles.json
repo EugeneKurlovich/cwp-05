@@ -1,1 +1,25 @@
-[{"id":1508876425237,"title":"News 3","text":"text News 3","date":"May 20, 2016","author":"Eugene3","comments":[]},{"id":1508878339028,"articleId":234,"text":"randomtext","date":"May 22 2016","author":"Petr","comments":[]}]
+[
+  {
+    "id" : 0,
+    "title" : "Новость первая",
+    "text" : "В Минске что-то произошло",
+    "date" : "Dec 25, 2017",
+    "author" : "Eugene",
+    "comments" : [
+      {
+        "id" : 0,
+        "articleId" : 0,
+        "text" : "Первый комментарий",
+        "date" : "Dec 25, 2017",
+        "author" : "Zhenya"
+      },
+      {
+        "id" : 1,
+        "articleId" : 0,
+        "text" : "Второй комментарий",
+        "date" : "Dec 26, 2017",
+        "author" : "Ivan"
+      }
+    ]
+  }
+]
