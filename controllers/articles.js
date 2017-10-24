@@ -7,7 +7,8 @@ module.exports = {
     readAll,
     read,
     create,
-    update
+    update,
+    deleteArt
 };
 
 function readAll(req, res, payload, cb) {
@@ -52,6 +53,17 @@ function update(req, res, payload, cb) {
         else {
             cb(null, null);
         }
+    }
+    else {
+        cb(null, null);
+    }
+}
+
+function deleteArt(req, res, payload, cb) {
+    if (payload) {
+        _articles.splice(_articles.findIndex(article => article.id === payload.id), 1);
+        fs.writeFile("articles.json", JSON.stringify(_articles), "utf8", function () { });
+        cb(null, "SUCCESS DELETE ARTICLE");
     }
     else {
         cb(null, null);

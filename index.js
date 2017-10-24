@@ -8,7 +8,8 @@ const handlers = {
     '/api/articles/readAll': articlesControllers.readAll,
     '/api/articles/read': articlesControllers.read,
     '/api/articles/create': articlesControllers.create,
-    '/api/articles/update': articlesControllers.update
+    '/api/articles/update': articlesControllers.update,
+    '/api/articles/delete': articlesControllers.deleteArt,
 };
 
 const server = http.createServer((req, res) => {
