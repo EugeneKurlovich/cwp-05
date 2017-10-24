@@ -9,7 +9,6 @@ comments.create = function (req, res, payload, cb) {
             payload.id = Date.now();
             _articles[index].comments.push(payload);
             cb(null, _articles[index].comments[_articles[index].comments.length - 1]);
-           // extras.saveArticles(_articles);
         }
         else {
             cb({code: 405, message: 'Article not found'});
@@ -28,7 +27,6 @@ comments.deleteCom = function (req, res, payload, cb) {
         if (index !== -1) {
             _articles[index].comments.splice(index, 1);
             cb(null, _articles);
-           // extras.saveArticles(_articles);
         }
         else {
             cb({code: 406, message: 'Comment not found'});
