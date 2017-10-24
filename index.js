@@ -1,5 +1,6 @@
 const http = require('http');
 const articlesControllers = require('./controllers/articles');
+const commentsController = require('./controllers/comments');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -10,6 +11,7 @@ const handlers = {
     '/api/articles/create': articlesControllers.create,
     '/api/articles/update': articlesControllers.update,
     '/api/articles/delete': articlesControllers.deleteArt,
+    '/api/comments/create': commentsController.create,
 };
 
 const server = http.createServer((req, res) => {
