@@ -1,5 +1,6 @@
 const fs = require('fs');
 let _articles = require('../articles.json');
+let validatorController =  require('./controllers/validator');
 
 let seed = 0;
 
@@ -16,7 +17,7 @@ function readAll(req, res, payload, cb) {
 }
 
 function read(req, res, payload, cb) {
-    if (payload) {
+ if(validatorController.isIdArticle(payload)) {
         cb(null, _articles[_articles.findIndex(article => article.id === payload.id)]);
     }
     else {
@@ -25,7 +26,7 @@ function read(req, res, payload, cb) {
 }
 
 function create(req, res, payload, cb) {
-    if (payload) 
+    if (validatorController.isArticle(payload)) 
     {
         payload.id = Date.now() + ++seed;
         payload.comments = [];
@@ -40,8 +41,8 @@ function create(req, res, payload, cb) {
 
 
 function update(req, res, payload, cb) {
-    if (payload) {
-        if (payload) {
+    if (validatorController.isIdArticle(payload)) {
+        if (validatorController.isArticle(payload)) {
             _articles[_articles.findIndex(article => article.id === payload.id)].author = payload.author;
             _articles[_articles.findIndex(article => article.id === payload.id)].id = payload.id;
             _articles[_articles.findIndex(article => article.id === payload.id)].date = payload.date;
@@ -60,7 +61,7 @@ function update(req, res, payload, cb) {
 }
 
 function deleteArt(req, res, payload, cb) {
-    if (payload) {
+    if (validatorController.isIdArticle(payload)) {
         _articles.splice(_articles.findIndex(article => article.id === payload.id), 1);
         fs.writeFile("articles.json", JSON.stringify(_articles), "utf8", function () { });
         cb(null, "SUCCESS DELETE ARTICLE");
