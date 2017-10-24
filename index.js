@@ -7,7 +7,8 @@ const port = 3000;
 const handlers = {
     '/api/articles/readAll': articlesControllers.readAll,
     '/api/articles/read': articlesControllers.read,
-    '/api/articles/create': articlesControllers.create
+    '/api/articles/create': articlesControllers.create,
+    '/api/articles/update': articlesControllers.update
 };
 
 const server = http.createServer((req, res) => {
