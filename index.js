@@ -1,10 +1,11 @@
 const http = require('http');
+const articlesControllers = require('./controllers/articles');
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 const handlers = {
-  '/sum': sum
+    '/api/articles/readAll': articlesControllers.readAll,
 };
 
 const server = http.createServer((req, res) => {
