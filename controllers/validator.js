@@ -17,5 +17,6 @@ function isCommentId(payload) {
 
 module.exports = {
     isIdArticle,
-    isArticle
+    isArticle,
+    isCommentId
 };

@@ -1,5 +1,5 @@
 let _articles = require("../articles.json");
-let validatorController =  require('./controllers/validator');
+let validatorController =  require('./validator');
 const comments = exports;
 
 comments.create = function (req, res, payload, cb) {
@@ -15,19 +15,26 @@ comments.create = function (req, res, payload, cb) {
         }
     }
     else {
-        cb({code: 405, message: 'Article not found'});
+        cb({code: 405, message: 'Articlee not found'});
     }
 };
 
-function deleteC(req, res, payload, cb) {
-    if (validatorController.isIdArticle(payload) && validatorController.isCommentId(payload)) {
-        let Cindex = _articles[_articles.findIndex(article => article.id === payload.articleid)].Comments.findIndex(comment => comment.id === payload.id);
-        _articles[_articles.findIndex(article => article.id === payload.articleid)].Comments.splice(Cindex, 1);
-        fs.writeFile("articles.json", JSON.stringify(_articles), "utf8", function () { });
-        cb(null, "SUCCESS DELETE COMMENT");
+comments.deleteCom = function(req, res, payload, cb) {
+     let index = _articles.findIndex(article => article.id === payload.articleId);
+
+    if (index !== -1) {
+        index = _articles[index].comments.findIndex(comment => comment.id === payload.id);
+        if (index !== -1) {
+            _articles[index].comments.splice(index, 1);
+            cb(null, _articles);
+        
+        }
+        else {
+            cb({code: 406, message: 'Comment not found'});
+        }
     }
     else {
-        cb(null, null);
+        cb({code: 405, message: 'Article not found'});
     }
 }
 

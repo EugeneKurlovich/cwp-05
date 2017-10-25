@@ -1,6 +1,6 @@
 const fs = require('fs');
 let _articles = require('../articles.json');
-let validatorController =  require('./controllers/validator');
+let validatorController =  require('./validator');
 
 let seed = 0;
 
